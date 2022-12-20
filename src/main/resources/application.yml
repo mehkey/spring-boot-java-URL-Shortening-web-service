@@ -1,0 +1,50 @@
+spring:
+  profiles:
+    active: test
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+logging:
+  level:
+    web: debug
+    sql: debug
+    org:
+      springframework:
+        transaction:
+          interceptor: trace
+---
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+  #    schema: classpath*:schema.sql
+  #    data: classpath*:data.sql
+  config:
+    activate:
+      on-profile: test
+---
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/url
+    username: root
+    password:
+  config:
+    activate:
+      on-profile: prod
+---
+spring:
+  datasource:
+    url: jdbc:h2:mem:devdb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  config:
+    activate:
+      on-profile: dev

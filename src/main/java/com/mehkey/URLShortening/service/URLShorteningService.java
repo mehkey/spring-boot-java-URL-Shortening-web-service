@@ -2,6 +2,7 @@ package com.mehkey.URLShortening.service;
 
 import com.mehkey.URLShortening.entities.URL;
 import com.mehkey.URLShortening.repositories.URLRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class URLShorteningService {
 
-    @Autowired
     private final URLRepository dao;
 
     public void initializeDatabase() {
@@ -24,18 +25,18 @@ public class URLShorteningService {
             ));
         }
     }
-
+    @Autowired
     public URLShorteningService(URLRepository dao) {
         this.dao = dao;
     }
 
     public List<URL> getAllUrls(){
-        return dao.findAllURL();
-    }
-
-    public List<URL> findAll() {
         return dao.findAll();
     }
+
+    /*public List<URL> findAll() {
+        return dao.findAll();
+    }*/
 
     public Optional<URL> findById(int id) {
         return dao.findById(id);

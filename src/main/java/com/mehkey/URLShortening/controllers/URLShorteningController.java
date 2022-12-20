@@ -15,9 +15,10 @@ import java.util.List;
 @RequestMapping("/url")
 public class URLShorteningController {
 
-    @Autowired
+
     private URLShorteningService service;
 
+    @Autowired
     public URLShorteningController(URLShorteningService service) {
         this.service = service;
     }
@@ -28,8 +29,8 @@ public class URLShorteningController {
         return service.findById(id).get();
     }
 
-    @GetMapping("/")
-    public List<URL> findAll(@PathVariable int id) {
-        return service.findAll();
+    @GetMapping("/all")
+    public List<URL> findAll() {
+        return service.getAllUrls();
     }
 }

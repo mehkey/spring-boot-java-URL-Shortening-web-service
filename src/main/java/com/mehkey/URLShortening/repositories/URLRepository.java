@@ -11,8 +11,8 @@ import java.util.List;
 
 
 @Transactional
-public interface URLRepository extends CrudRepository<URL,Integer> , ListCrudRepository<URL,Integer> {
+public interface URLRepository extends CrudRepository<URL,Integer> {
     URL findURLById(Integer id);
-    List<URL> findAllURL();
+    List<URL> findAll();
     //List<Product> findTop10ByNameContainsOrderByPrice(String regex);
 }

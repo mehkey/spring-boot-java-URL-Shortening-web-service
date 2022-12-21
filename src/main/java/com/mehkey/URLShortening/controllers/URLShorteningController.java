@@ -2,19 +2,22 @@ package com.mehkey.URLShortening.controllers;
 
 import com.mehkey.URLShortening.entities.URL;
 import com.mehkey.URLShortening.service.URLShorteningService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/url")
 public class URLShorteningController {
 
+    private final Logger log = LoggerFactory.getLogger(URLShorteningController.class);
 
     private URLShorteningService service;
 
@@ -24,9 +27,18 @@ public class URLShorteningController {
     }
 
     @GetMapping("{id}")
-    public URL findById(@PathVariable int id) {
-        //if service.findById(id).ifPresent();
-        return service.findById(id).get();
+    public ResponseEntity<URL> findById(@PathVariable int id) {
+        return ResponseEntity.of(service.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<URL> insertProduct(@RequestBody URL url) {
+        URL p = service.saveURL(url);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/{id}")
+                .buildAndExpand(p.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(p);
     }
 
     @GetMapping("/all")

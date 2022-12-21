@@ -6,6 +6,7 @@ import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 //import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.transaction.annotation.Transactional;
 
@@ -14,5 +15,7 @@ import java.util.List;
 public interface URLRepository extends CrudRepository<URL,Integer> {
     URL findURLById(Integer id);
     List<URL> findAll();
+    URL findURLByUrl(String url);
+    Optional<URL> findURLByShortUrl(String shortUrl);
     //List<Product> findTop10ByNameContainsOrderByPrice(String regex);
 }

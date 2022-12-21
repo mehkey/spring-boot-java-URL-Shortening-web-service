@@ -2,27 +2,65 @@
 
 package com.mehkey.URLShortening.entities;
 
-import jakarta.annotation.Generated;
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.Id;
 //import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(name = "URL")
 public class URL{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id", updatable = false, nullable = false)
     private int id;
 
     @NotBlank
+    //@Column
     private String url;
 
-    //private Date creationDate;
+    @JsonFormat(pattern = ("yyyy/MM/dd HH:mm:ss"))
+    //@JsonSerialize(using = LocalDateTimeSerializer.class)
+    //@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    //@Column
+    private LocalDateTime createdDate;
+
+    @NotBlank
+    //@Column
+    private String shortUrl;
+
+    /*
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getShortUrl() {
+        return shortUrl;
+    }
+
+    public void setShortUrl(String shortUrl) {
+        this.shortUrl = shortUrl;
+    }
 
     public URL() {}
 
@@ -33,7 +71,6 @@ public class URL{
     public void setUrl(String url) {
         this.url = url;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -48,13 +85,7 @@ public class URL{
         return Objects.hash(id, url);
     }
 
-    @Override
-    public String toString() {
-        return "URL{" +
-                "id=" + id +
-                ", url='" + url + '\'' +
-                '}';
-    }
+
 
     public int getId() {
         return id;
@@ -66,9 +97,13 @@ public class URL{
 
 
 
-    public URL(int id, String url) {
+    public URL(int id, String url, LocalDateTime createdDate, String shortUrl) {
         this.id = id;
         this.url = url;
+        this.createdDate = createdDate;
+        this.shortUrl = shortUrl;
         //this.creationDate = new Date(System.currentTimeMillis());
     }
+
+     */
 }

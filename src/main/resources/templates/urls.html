@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>URLs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h2>Urls:</h2>
+<table id="urls">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>URL</th>
+        <th>Created Date</th>
+        <th>Short URL</th>
+    </tr>
+    </thead>
+    <tr th:border="1" style="width: 50%"
+        th:each="u: ${urls}">
+
+        <td th:text="${u.id}">id</td>
+        <td th:text="${u.url}">url</td>
+        <td th:text="${u.createdDate}">created date</td>
+        <td scope="row"><a th:href="@{/r/{short}(short=${u.shortUrl})}" th:text="${u.shortUrl}"  /></td>
+        <!--td th:href="@{/r/{short}(short=${u.shortUrl})}" th:text="${u.shortUrl}" >short url</td-->
+
+        <!--a th:href="localhost:8080/url/"><td th:text="${u.shortUrl}">short url</td><a-->
+    </tr>
+</table>
+
+<h2>New URL</h2>
+<div>
+    <form method="post" th:object="${url}">
+        <label for="url">URL</label>
+        <input type="text" id="url" name="url"
+               placeholder="Long URL" th:field="*{url}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('url')}"
+              th:errors="*{url}">URL Error</span>
+
+        <input th:type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

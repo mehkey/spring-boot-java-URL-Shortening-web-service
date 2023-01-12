@@ -16,3 +16,20 @@ Java Spring boot URL Shortening Service containing the following components:
 + Gradle
 + 404 page
 + config file
+
+
+## Docker Commands
+
+> gradle build
+
+> gradle test
+
+> docker build -t urlshortening .
+
+> docker run -p 8080:8080 --name urlshortening -d urlshortening
+
+
+
+
+
+

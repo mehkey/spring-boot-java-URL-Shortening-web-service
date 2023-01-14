@@ -36,9 +36,7 @@ public class URLRedirectController {
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(optional.get().getUrl())).build();
         } else {
             throw new URLNotFoundException(shortUrl);
-            //return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/error")).build();
         }
-        //return "urls";
     }
 
 }

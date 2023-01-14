@@ -20,13 +20,16 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name = "URL")
 public class URL{
 
+    public URL(String url){
+        this.setUrl(url);
+    }
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column(name = "id", updatable = false, nullable = false)
     private int id;
@@ -45,6 +48,12 @@ public class URL{
     //@Column
     private String shortUrl;
 
+    /*public boolean equals(URL url2){
+        if (url2 == null) {
+            return false;
+        }
+        return url2.getId() == this.getId();
+    }*/
     /*
     public LocalDateTime getCreatedDate() {
         return createdDate;

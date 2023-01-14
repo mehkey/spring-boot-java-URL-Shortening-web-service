@@ -64,7 +64,7 @@ public class URLShorteningService {
         return dao.save(url);
     }
 
-    private String randomCode() {
+    String randomCode() {
         UUID uuid = UUID.randomUUID();
         long lo = uuid.getLeastSignificantBits();
         long hi = uuid.getMostSignificantBits();

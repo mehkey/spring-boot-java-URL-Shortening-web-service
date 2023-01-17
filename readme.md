@@ -4,7 +4,6 @@
 
 ![Test code and embed into README](https://github.com/mehkey/spring-boot-java-URL-Shortening-web-service/actions/workflows/gradle.yml/badge.svg)
 
-
 Java Spring boot URL Shortening Service containing the following components:
 
 + WebClient Test
@@ -17,7 +16,6 @@ Java Spring boot URL Shortening Service containing the following components:
 + 404 page
 + config file
 
-
 ## Docker Commands
 
 > gradle build
@@ -29,7 +27,7 @@ Java Spring boot URL Shortening Service containing the following components:
 > docker run -p 8080:8080 --name urlshortening -d urlshortening
 
 
+## Test Coverage
 
-
-
+![Test Coverage](./TestCoverage.png)
 

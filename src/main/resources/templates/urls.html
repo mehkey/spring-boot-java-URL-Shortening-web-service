@@ -5,10 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>URLs</title>
-    <link rel="stylesheet" href="styles.css">
+    <link th:href="@{/styles.css}" rel="stylesheet" />
+
 </head>
 <body>
-<h2>Urls:</h2>
+<h2>URLS</h2>
 <table id="urls">
     <thead>
     <tr>
@@ -31,10 +32,10 @@
     </tr>
 </table>
 
-<h2>New URL</h2>
+<h2>New URLs</h2>
 <div>
     <form method="post" th:object="${url}">
-        <label for="url">URL</label>
+        <label for="url">Enter a long URL below</label>
         <input type="text" id="url" name="url"
                placeholder="Long URL" th:field="*{url}">
         <span class="validationError"

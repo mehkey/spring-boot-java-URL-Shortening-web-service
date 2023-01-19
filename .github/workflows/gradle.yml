@@ -31,14 +31,14 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
-        arguments: build test
+        arguments: build
     - name: Generate JaCoCo Badge
       id: jacoco
       uses: cicirello/jacoco-badge-generator@v2
       with:
         generate-branches-badge: true
         jacoco-csv-file: >
-          build/reports/jacoco/test/jacocoTestReports.csv
+          reports/jacocoTestReport.csv
 
     - name: Log coverage percentage
       run: |

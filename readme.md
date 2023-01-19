@@ -34,7 +34,7 @@ This API allows for the redirecting of shortened URLs to their original, full UR
 
 ## Endpoints
 
-### GET `/r/{shortUrl}`
+### GET `/{shortUrl}`
 
 Redirects the user to the full URL associated with the given short URL.
 
@@ -73,7 +73,6 @@ Creates a new shortened URL.
 
 #### Parameters
 - `url` : (required) the original URL
-- `shortUrl` : (required) the shortened URL
 
 #### Responses
 - `201 Created`: The URL is successfully created and the location of the new resource is returned in the `Location` header.
@@ -85,6 +84,18 @@ Retrieves all the URLs.
 
 #### Responses
 - `200 OK`: A list of all the URLs is returned in the response body.
+
+
+### GET `/urls`
+
+Retrieves all the URLs.
+
+#### Responses
+- `200 OK`: A an HTML page with a list of URLs and a form to submit new URLS.
+
+e.g.
+
+![UI](./UI.png)
 
 
 

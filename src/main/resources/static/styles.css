@@ -1,0 +1,55 @@
+/* Add some basic styling to the table */
+#urls {
+    border-collapse: collapse;
+    width: 100%;
+}
+#urls th, #urls td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+#urls th {
+    background-color: #f2f2f2;
+}
+
+h2 {
+    text-align: center;
+}
+/* Add some basic styling to the form */
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+form input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Add some basic styling to the validation error message */
+.validationError {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 8px;
+    display: block;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+}

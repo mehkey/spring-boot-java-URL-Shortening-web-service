@@ -3,6 +3,7 @@
 
 
 ![Test code and embed into README](https://github.com/mehkey/spring-boot-java-URL-Shortening-web-service/actions/workflows/gradle.yml/badge.svg)
+![Coverage](.github/badges/jacoco.svg)
 
 Java Spring boot URL Shortening Service containing the following components:
 

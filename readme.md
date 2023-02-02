@@ -120,7 +120,7 @@ Location: /url/2
     "id": 2,
     "url": "https://www.example.com",
     "createdDate": "2022/01/01 12:00:00",
-    "shortUrl": "http://short.ly/2"
+    "shortUrl": "https://localhost/2"
 }
 ```
 

@@ -71,10 +71,15 @@ Retrieves the URL associated with the given id.
 - `404 Not Found`: The provided id does not match any existing URLs.
 
 Example Request:
+HTTP/1.1
+
+
+Example Response:
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 
 ```json
-HTTP/1.1
-Content-Type: application/json
 
 {
     "id": 1,
@@ -82,14 +87,6 @@ Content-Type: application/json
     "createdDate": "2022/01/01 12:00:00",
     "shortUrl": "https://localhost/1"
 }
-
-Example Response:
-
-```json
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
 ```
 
 ### POST `/url`
@@ -105,20 +102,20 @@ Creates a new shortened URL.
 
 
 Example Request:
-```json
 HTTP/1.1
 Content-Type: application/json
 
+```json
 {
     "url": "https://www.example.com"
 }
 ```
 
 Example Response:
-```
 HTTP/1.1 201 Created
 Content-Type: application/json
 Location: /url/2
+```
 {
     "id": 2,
     "url": "https://www.example.com",
@@ -141,10 +138,11 @@ Content-Type: application/json
 
 
 Example Response:
-```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
+
+```json
 [
     {
         "id": 1,

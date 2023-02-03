@@ -182,3 +182,75 @@ e.g.
 ## [URL Shortening Design](https://github.com/mehkey/system-design/tree/main/designs/URLShortner)
 
 ![URL Shortening Design](https://raw.githubusercontent.com/mehkey/system-design/main/designs/URLShortner/Untitled6.png)
+
+
+
+## Functional Requirements:
+- A user should provide a URL and receive a shoreded url
+- A user should be redirected to the original URL when going to the shoretened URL
+- Timelimit on the short? URL valid for a configurable amount of time
+
+
+## Non-Functional Requirements:
+- Scalability
+- Performance (Max Latency e.g. 100 MS with 99.999)
+and Elasticity
+- Availability
+
+
+## Kubernetes Yaml:
+
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: URLShortening-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: URLShortening
+  template:
+    metadata:
+      labels:
+        app: URLShortening
+    spec:
+      containers:
+      - name: URLShortening
+        image: URLShortening:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: JAVA_OPTS
+          value: "-Dspring.profiles.active=prod"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: URLShortening-service
+spec:
+  selector:
+    app: URLShortening
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: URLShortening-external-service
+spec:
+  selector:
+    app: URLShortening
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+
+
+```

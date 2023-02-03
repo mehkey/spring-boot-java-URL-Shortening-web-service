@@ -1,16 +1,12 @@
 package com.mehkey.URLShortening.service;
 
 import com.mehkey.URLShortening.entities.URL;
+import com.mehkey.URLShortening.repositories.URLCacheRepository;
 import com.mehkey.URLShortening.repositories.URLRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,11 +16,13 @@ import static org.mockito.Mockito.*;
 class URLShorteningServiceTest {
     private URLShorteningService service;
     private URLRepository dao = mock(URLRepository.class);
+    private URLCacheRepository cache = mock(URLCacheRepository.class);
+
     private URL url = new URL();
 
     @BeforeEach
     public void setUp() {
-        service = new URLShorteningService(dao);
+        service = new URLShorteningService(dao,cache);
     }
 
     @Test

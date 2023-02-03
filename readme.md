@@ -5,6 +5,8 @@
 ![Test code and embed into README](https://github.com/mehkey/spring-boot-java-URL-Shortening-web-service/actions/workflows/gradle.yml/badge.svg)
 ![Coverage](.github/badges/jacoco.svg)
 
+CI/CD Badge created using using [Github Actions](https://github.com/mehkey/spring-boot-java-URL-Shortening-web-service/actions)
+
 ## [Original Design for URL Shortening Service](https://github.com/mehkey/system-design/tree/main/designs/URLShortner)
 
 Java Spring boot URL Shortening Service containing the following components:

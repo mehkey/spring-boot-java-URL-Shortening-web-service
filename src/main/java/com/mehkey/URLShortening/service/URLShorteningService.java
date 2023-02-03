@@ -1,6 +1,7 @@
 package com.mehkey.URLShortening.service;
 
 import com.mehkey.URLShortening.entities.URL;
+import com.mehkey.URLShortening.repositories.URLCacheRepository;
 import com.mehkey.URLShortening.repositories.URLRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class URLShorteningService {
 
     private final URLRepository dao;
 
+    private final URLCacheRepository cache;
+
     public void initializeDatabase() {
         if (dao.count() == 0) {
             dao.saveAll(Arrays.asList(
@@ -29,8 +32,9 @@ public class URLShorteningService {
         }
     }
     @Autowired
-    public URLShorteningService(URLRepository dao) {
+    public URLShorteningService(URLRepository dao, URLCacheRepository cache) {
         this.dao = dao;
+        this.cache = cache;
     }
 
     public List<URL> getAllUrls(){
@@ -38,6 +42,11 @@ public class URLShorteningService {
     }
 
     public Optional<URL> findByShortUrl(String shortUrl) {
+        Optional<URL> url = cache.findById(shortUrl);
+        if ( url.isPresent() ) {
+            return url;
+        }
+
         return dao.findURLByShortUrl(shortUrl);
     }
 

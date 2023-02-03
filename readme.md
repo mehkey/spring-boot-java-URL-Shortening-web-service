@@ -177,3 +177,8 @@ e.g.
 
 ![Test Coverage](./TestCoverage.png)
 
+
+
+## [URL Shortening Design](https://github.com/mehkey/system-design/tree/main/designs/URLShortner)
+
+![URL Shortening Design](https://raw.githubusercontent.com/mehkey/system-design/main/designs/URLShortner/Untitled6.png)

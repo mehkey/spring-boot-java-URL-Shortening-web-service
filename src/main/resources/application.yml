@@ -23,6 +23,9 @@ spring:
     driver-class-name: org.h2.Driver
   #    schema: classpath*:schema.sql
   #    data: classpath*:data.sql
+  redis:
+    host: localhost
+    port: 6379
   config:
     activate:
       on-profile: test
@@ -32,6 +35,9 @@ spring:
     url: jdbc:mysql://localhost:3306/url
     username: root
     password:
+  redis:
+    host: localhost
+    port: 6379
   config:
     activate:
       on-profile: prod
@@ -45,6 +51,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+  redis:
+    host: localhost
+    port: 6379
   config:
     activate:
       on-profile: dev

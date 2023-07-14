@@ -14,6 +14,7 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class URLShorteningServiceTest {
+
     private URLShorteningService service;
     private URLRepository dao = mock(URLRepository.class);
     private URLCacheRepository cache = mock(URLCacheRepository.class);
